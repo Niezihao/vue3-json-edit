@@ -1,13 +1,14 @@
 {
-  "name": "vue3-json-view",
-  "version": "0.0.0",
+  "name": "vue3-json-edit",
+  "version": "1.0.0",
   "private": true,
   "scripts": {
     "dev": "vite --host",
     "build": "run-p type-check build-only",
     "preview": "vite preview",
     "build-only": "vite build",
-    "type-check": "vue-tsc --noEmit -p tsconfig.app.json --composite false"
+    "type-check": "vue-tsc --noEmit -p tsconfig.app.json --composite false",
+    "prepublish": "yarn lib-build"
   },
   "dependencies": {
     "less": "^4.2.0",

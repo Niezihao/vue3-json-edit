@@ -3,12 +3,12 @@
  * @Author: niezihao
  * @Date: 2023-09-05 15:19:57
  * @LastEditors: niezihao
- * @LastEditTime: 2023-12-15 16:18:27
+ * @LastEditTime: 2023-12-15 17:48:42
 -->
 <script setup lang="ts">
 import { ref, computed } from "vue";
-import Json from '../mock/mock.json'
-import jsonView from './components/index.vue';
+import Json from "../mock/mock.json";
+// import jsonView from '../lib/index.vue'
 
 const json = ref(Json);
 const theme = ref("");
@@ -31,7 +31,7 @@ const iconColor = computed(() => {
 <template>
   <div id="app">
     <div class="layout">
-      <h1>vue3-json-view</h1>
+      <h1>vue3-json-edit</h1>
       <a target="_blank" href="https://github.com/Niezihao/vue3-json-edit.git"
         >使用文档</a
       >
@@ -92,13 +92,22 @@ const iconColor = computed(() => {
         </ul>
       </div>
       <div class="content">
-        <json-view :data="json" :theme="theme" :deep="deep" :iconStyle="iconStyle" :fontSize="fontSize" :lineHeight="lineHeight" :closed="closed" :iconColor="iconColor"/>
+        <json-view
+          :data="json"
+          :theme="theme"
+          :deep="deep"
+          :iconStyle="iconStyle"
+          :fontSize="fontSize"
+          :lineHeight="lineHeight"
+          :closed="closed"
+          :iconColor="iconColor"
+        />
       </div>
     </div>
   </div>
 </template>
 
-<style scoped>
+<style scoped lang="less">
 #app {
   .layout {
     width: 1200px;

@@ -3,9 +3,9 @@
  * @Author: niezihao
  * @Date: 2023-12-13 12:05:30
  * @LastEditors: niezihao
- * @LastEditTime: 2023-12-15 09:08:26
+ * @LastEditTime: 2023-12-15 17:11:28
  */
-import "./main.css";
+// import "./main.css";
 
 import { createApp, type DirectiveBinding } from "vue";
 
