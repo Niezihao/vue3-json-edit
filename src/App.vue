@@ -3,12 +3,12 @@
  * @Author: niezihao
  * @Date: 2023-09-05 15:19:57
  * @LastEditors: niezihao
- * @LastEditTime: 2023-12-15 17:48:42
+ * @LastEditTime: 2023-12-18 12:15:17
 -->
 <script setup lang="ts">
 import { ref, computed } from "vue";
 import Json from "../mock/mock.json";
-// import jsonView from '../lib/index.vue'
+import jsonView from '../lib/index.vue'
 
 const json = ref(Json);
 const theme = ref("");

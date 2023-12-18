@@ -3,7 +3,7 @@
  * @Author: niezihao
  * @Date: 2023-12-13 12:22:30
  * @LastEditors: niezihao
- * @LastEditTime: 2023-12-15 17:31:18
+ * @LastEditTime: 2023-12-18 17:19:56
 -->
 <template>
   <div
@@ -148,7 +148,7 @@
         </p>
         <div v-if="!innerclosed && length" class="json-body">
           <template v-for="(item, index) in items">
-            <json
+            <jsonEdit
               v-if="item.isJSON"
               :closed="isClose()"
               :key="index"
@@ -189,11 +189,12 @@
   </div>
 </template>
 
-<script lang="ts" setup name="jsonView">
-import json from "./index.vue";
+<script lang="ts" setup name="jsonEdit">
+import jsonEdit from "./index.vue";
 import { ref, computed, watch, onMounted } from "vue";
 import { basicProps } from "./props";
 const props = defineProps(basicProps);
+interface Json {}
 
 let innerclosed = ref(props.closed);
 let templateDeep = ref(props.currentDeep);
@@ -220,10 +221,10 @@ let prefix = computed(() => {
   return isArray.value ? "[" : "{";
 });
 let items = computed(() => {
-  const json = props.data;
+  const json: any = props.data;
 
   if (isArray.value) {
-    return json?.map((item) => {
+    return json?.map((item: any) => {
       const isJSON = isObjectOrArray(item);
       return {
         value: item,
@@ -233,7 +234,7 @@ let items = computed(() => {
     });
   }
   return Object.keys(json as object).map((key) => {
-    const item = json[key]
+    const item = json[key];
     const isJSON = isObjectOrArray(item);
     return {
       value: item,
@@ -263,7 +264,7 @@ function formatValue(data: any) {
   }
   return data;
 }
-function getDataType(data) {
+function getDataType(data: any) {
   return data && data._isBigNumber
     ? "number"
     : Object.prototype.toString.call(data).slice(8, -1).toLowerCase();
@@ -284,7 +285,9 @@ function toggleClose() {
 function isClose() {
   return templateDeep.value + 1 > props.deep;
 }
-function isEmptyArrayOrObject(data: unknown[] | Record<string, any> | undefined) {
+function isEmptyArrayOrObject(
+  data: unknown[] | Record<string, any> | undefined
+) {
   // 空数组或者空对象
   return [{}, []]
     .map((item) => JSON.stringify(item))
