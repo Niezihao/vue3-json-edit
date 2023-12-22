@@ -1,15 +1,20 @@
 /*
- * @Descripttion: 
+ * @Descripttion:
  * @Author: niezihao
  * @Date: 2023-12-15 09:42:54
  * @LastEditors: niezihao
- * @LastEditTime: 2023-12-15 09:44:15
+ * @LastEditTime: 2023-12-21 09:59:35
  */
 export const basicProps = {
   data: {
     // 传入的json数据
     type: [Object, Array],
     required: true,
+  },
+  isReadonly: {
+    // 是否只读
+    type: Boolean,
+    default: false,
   },
   jsonKey: {
     // json的key值，用于第二层及二层以上的组件的key值

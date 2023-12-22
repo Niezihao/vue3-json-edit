@@ -3,14 +3,38 @@
  * @Author: niezihao
  * @Date: 2023-09-05 15:19:57
  * @LastEditors: niezihao
- * @LastEditTime: 2023-12-18 12:15:17
+ * @LastEditTime: 2023-12-22 16:19:33
 -->
 <script setup lang="ts">
 import { ref, computed } from "vue";
 import Json from "../mock/mock.json";
-import jsonView from '../lib/index.vue'
+import jsonView from "../lib/index.vue";
 
-const json = ref(Json);
+
+const demo =
+  // [
+  {
+    count: 20,
+    string: "string",
+    start: 0,
+    null: null,
+    // object: {},
+    // array: [],
+    boolean: true,
+    // total: 250,
+    // subjects: [
+    //   {
+    //     rating: {
+    //       max: 10,
+    //       average: 9.6,
+    //       stars: "50",
+    //       min: 0,
+    //     },
+    //   },
+    // ],
+  };
+// ];
+const json = ref(demo);
 const theme = ref("");
 const fontSize = ref(14);
 const lineHeight = ref(24);
@@ -91,9 +115,8 @@ const iconColor = computed(() => {
           </li>
         </ul>
       </div>
-      <div class="content">
         <json-view
-          :data="json"
+          v-model:data="json"
           :theme="theme"
           :deep="deep"
           :iconStyle="iconStyle"
@@ -102,7 +125,6 @@ const iconColor = computed(() => {
           :closed="closed"
           :iconColor="iconColor"
         />
-      </div>
     </div>
   </div>
 </template>
@@ -110,7 +132,7 @@ const iconColor = computed(() => {
 <style scoped lang="less">
 #app {
   .layout {
-    width: 1200px;
+    width: 1400px;
     margin: 0 auto;
 
     h1 {
@@ -170,10 +192,6 @@ const iconColor = computed(() => {
       }
     }
 
-    .content {
-      border: 1px solid #ccc;
-      border-top: none;
-    }
   }
 }
 </style>
