@@ -3,13 +3,15 @@
  * @Author: niezihao
  * @Date: 2023-12-15 09:42:54
  * @LastEditors: niezihao
- * @LastEditTime: 2023-12-21 09:59:35
+ * @LastEditTime: 2023-12-25 15:56:29
  */
 export const basicProps = {
   data: {
     // 传入的json数据
     type: [Object, Array],
-    required: true,
+    default() {
+      return {};
+    },
   },
   isReadonly: {
     // 是否只读

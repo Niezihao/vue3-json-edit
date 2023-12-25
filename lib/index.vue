@@ -3,7 +3,7 @@
  * @Author: niezihao
  * @Date: 2023-12-15 09:36:47
  * @LastEditors: niezihao
- * @LastEditTime: 2023-12-22 16:15:07
+ * @LastEditTime: 2023-12-25 14:39:29
 -->
 <template>
   <json-edit v-bind="$attrs" :data="model" @change="change"></json-edit>
@@ -22,18 +22,14 @@ const props = defineProps({
 });
 let model = computed({
   get() {
-    console.log("props.data", props.data);
     return props.data;
   },
   set(value) {
-    console.log('set',value);
     emit("update:data", value);
   },
 });
 function change(value: any){
-  console.log('change',value);
   emit("update:data", value);
-
 }
 
 </script>

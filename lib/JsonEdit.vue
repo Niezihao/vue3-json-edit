@@ -3,7 +3,7 @@
  * @Author: niezihao
  * @Date: 2023-12-13 12:22:30
  * @LastEditors: niezihao
- * @LastEditTime: 2023-12-22 16:15:29
+ * @LastEditTime: 2023-12-25 16:43:05
 -->
 <template>
   <div
@@ -211,15 +211,16 @@
                 type="text"
                 v-if="item.key === editValue"
                 v-model="item.value"
-                class="input_edit"
+                class="json_input_edit"
                 v-focus
                 @input="changeEditValue(item)"
+                rows="1"
               ></textarea>
               <select
-                id="valueTypeRef"
                 v-if="item.key === editValue"
                 v-model="valueType"
                 option="valueTypeList"
+                class="json_select_edit"
               >
                 <option
                   :value="item.value"
@@ -265,6 +266,7 @@
                   color: rgb(88, 110, 117);
                   width: 1.2em;
                   margin-left: 5px;
+                  cursor: pointer;
                 "
               >
                 <path
@@ -293,6 +295,7 @@
                   color: rgb(88, 110, 117);
                   width: 1.2em;
                   margin-left: 5px;
+                  cursor: pointer;
                 "
               >
                 <path
@@ -327,14 +330,19 @@
         type="text"
         v-model="addValue"
         :style="{
-          border: valid ? '2px solid #ff2121a8' : 'revert',
+          border: valid
+            ? '2px solid #ff2121a8 !important'
+            : '1px solid #c0c4cc',
           outline: 'none',
           marginRight: '10px',
         }"
         @input="changeAddValue"
+        class="json_input_edit"
       />
 
-      <button @click="handleAdd" style="margin-right: 10px">确认</button>
+      <button @click.prevent.enter="handleAdd" style="margin-right: 10px">
+        确认
+      </button>
       <div v-if="valid" style="color: #ff2121a8; margin-left: 35px">
         {{ validMessage }}
       </div>
@@ -515,15 +523,15 @@ function handleEdit(node: { [x: string]: any; key: string }) {
   });
 }
 function handleSave(node: { [x: string]: any; key: string | number }) {
+  isEdit.value = false;
   if (!valueType.value) {
     return;
   }
   const obj = JSON.parse(JSON.stringify(props.data));
-  // console.log(convertToType(node.value, valueType.value));
+  console.log(convertToType(node.value, valueType.value));
 
   let value = convertToType(node.value, valueType.value);
   obj[node.key] = value;
-  isEdit.value = false;
   editValue.value = "";
   // 重置
   valueTypeList.value = [
@@ -586,4 +594,5 @@ onMounted(() => {
 @import "./style/index";
 @import "./style/on-dark";
 @import "./style/vs-code";
+@import "./style/default";
 </style>

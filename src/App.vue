@@ -3,7 +3,7 @@
  * @Author: niezihao
  * @Date: 2023-09-05 15:19:57
  * @LastEditors: niezihao
- * @LastEditTime: 2023-12-22 16:19:33
+ * @LastEditTime: 2023-12-25 11:33:22
 -->
 <script setup lang="ts">
 import { ref, computed } from "vue";
@@ -94,8 +94,8 @@ const iconColor = computed(() => {
           </li>
           <li>
             <label>icon-color</label>
-            <input type="color" v-model="color1" />
-            <input type="color" v-model="color2" />
+            <input type="color" v-model="color1" style="padding: 0!important;"/>
+            <input type="color" v-model="color2" style="padding: 0!important;"/>
           </li>
           <li>
             <label>font-size</label>

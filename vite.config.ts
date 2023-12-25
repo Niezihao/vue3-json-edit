@@ -3,10 +3,10 @@
  * @Author: niezihao
  * @Date: 2023-09-05 15:19:57
  * @LastEditors: niezihao
- * @LastEditTime: 2023-12-18 12:18:55
+ * @LastEditTime: 2023-12-25 16:45:21
  */
 import { fileURLToPath, URL } from "node:url";
-import path from 'path'
+import path from "path";
 import { defineConfig } from "vite";
 import vue from "@vitejs/plugin-vue";
 import vueJsx from "@vitejs/plugin-vue-jsx";
@@ -15,19 +15,21 @@ import vueJsx from "@vitejs/plugin-vue-jsx";
 export default defineConfig({
   build: {
     lib: {
-      entry: path.resolve(__dirname, 'lib/index.vue'),
+      entry: path.resolve(__dirname, "lib/index.vue"),
       // umd 形式的命名空间
-      name: 'dict',
-      fileName: (format) => `json-edit.${format}.js`
+      name: "dict",
+      fileName: (format) => `json-edit.${format}.js`,
     },
+    // 打包后的目录
+    // outDir: path.resolve('D:/cgkj/模块化/system-manage/node_modules/json-edit-vue3/dist'),
     rollupOptions: {
-      external: ['vue'],
+      external: ["vue"],
       output: {
         globals: {
-          vue: 'Vue'
-        }
-      }
-    }
+          vue: "Vue",
+        },
+      },
+    },
   },
   plugins: [vue(), vueJsx()],
   resolve: {
