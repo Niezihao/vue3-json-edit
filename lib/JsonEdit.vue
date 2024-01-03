@@ -3,7 +3,7 @@
  * @Author: niezihao
  * @Date: 2023-12-13 12:22:30
  * @LastEditors: niezihao
- * @LastEditTime: 2023-12-25 16:43:05
+ * @LastEditTime: 2023-12-28 17:31:43
 -->
 <template>
   <div
@@ -173,7 +173,7 @@
         </p>
         <div v-if="!innerclosed && length" class="json-body">
           <template v-for="(item, index) in items">
-            <jsonEdit
+            <ea-json
               v-if="item.isJSON"
               :closed="isClose()"
               :key="index"
@@ -350,11 +350,12 @@
   </div>
 </template>
 
-<script lang="ts" setup name="jsonEdit">
-import jsonEdit from "./index.vue";
+<script lang="ts" setup>
+import eaJson from "./index.vue";
 import { ref, computed, watch, onMounted, nextTick } from "vue";
 import { basicProps } from "./props";
 import { isValidString, getTypeFromString, convertToType } from "./utils";
+defineOptions({ name: "jsonEdit" });
 const props = defineProps(basicProps);
 const emit = defineEmits(["update:data", "change"]);
 
